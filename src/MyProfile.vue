@@ -1,44 +1,40 @@
-<script lang='ts'>
-import { computed, defineComponent, ref, PropType } from 'vue'
+<script lang='ts' setup>
+import { computed, inject, ref,  } from 'vue'
+import { langKeys } from './Symbol-keys';
+import type { UserTyp } from './types'
 
-interface UserTyp {
-  name: string;
-  age: number;
+interface EmitsInterf {
+  (event: 'change', param: boolean): void
 }
-export default defineComponent({
-  name: 'MyProfile',
-  emits: ['change'],
-  props: {
-    user: {
-      type: Object as PropType<UserTyp>,
-      required: true
-    },
-  },
-  setup(props, { emit }) {
-    const msg = ref('my profile')
-    const doubleAge = computed(() => props.user.age * 2)
-    
-    //
-    const isHidden = ref(false)
-    const toggleHidden = () => {
-      isHidden.value = !isHidden.value
-      emit('change', isHidden.value)
-    }
+const emit = defineEmits<EmitsInterf>()
 
-    return {
-      msg,
-      doubleAge,
-      isHidden,
-      toggleHidden,
-    }
-  }
+const props = withDefaults(defineProps<{
+  readonly user?: UserTyp;
+  msg2?: string;
+}>(), {
+  user: () => ({ name: 'default', age: 0 }),
+  // msg2: 'default msg2'
 })
 
+
+const msg = ref('my profile')
+const doubleAge = computed(() => props.user.age * 2)
+
+//
+const isHidden = ref(false)
+const toggleHidden = () => {
+  isHidden.value = !isHidden.value
+  emit('change', isHidden.value)
+}
+
+//
+const lang = inject(langKeys, ref('zh'))
 
 </script>
 
 <template>
   <div>
+    <h2>当前语言: {{ lang }}</h2>
     <h1>{{ msg }}</h1>
     <h2>Name: {{ user.name }}</h2>
     <h2 v-show="!isHidden">Age: {{ user.age }}</h2>
@@ -47,6 +43,4 @@ export default defineComponent({
   </div>
 </template>
 
-<style lang='scss' scoped>
-
-</style>
+<style lang='scss' scoped></style>./Symbol-keys
