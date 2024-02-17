@@ -13,4 +13,14 @@ export default defineConfig({
       '@': '/src'
     }
   },
+  css: {
+    preprocessorOptions: {
+      scss: { // 全局引入sass全局变量，mixin
+        // additionalData: `
+        //   @import "@/assets/scss/variable.scss";
+        //   @import "@/assets/scss/mixin.scss";
+        // `
+      }
+    }
+  }
 })

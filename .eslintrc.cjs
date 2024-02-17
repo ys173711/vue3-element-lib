@@ -25,5 +25,6 @@ module.exports = {
     semi: 0, // 不检查分号
     indent: ["error", 2], // tab缩进为2
     // "@typescript-eslint/method-signature-style": ["error", "property"], // 不允许使用方法定义函数类型（双向协变）
+    // 'vue/multi-word-component-names': 'off', // 关闭多个单词组成的组件名检查
   },
 };
