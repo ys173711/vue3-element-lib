@@ -11,7 +11,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <h1>Vue3 + TS 开发组件库</h1>
+  <h1 class="title">Vue3 + TS 开发组件库</h1>
   <div>
     <e-button type='primary' ref="buttonRef">按钮</e-button>
     
@@ -32,5 +32,9 @@ onMounted(() => {
 
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
+}
+.title {
+  --main-bg-color: yellow;
+  background-color: var(--main-bg-color);
 }
 </style>
