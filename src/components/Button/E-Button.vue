@@ -5,8 +5,6 @@ import type {ButtonPropsInterf} from './types'
 defineOptions({name: 'EButton'})
 
 withDefaults(defineProps<ButtonPropsInterf>(), {
-  type: 'primary',
-  size: 'medium',
   nativeType: 'button',
 })
 

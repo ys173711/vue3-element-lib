@@ -12,7 +12,7 @@ interface ButtonNativePropsInterf {
 }
 
 type ButtonTypeTyp = "primary" | "success" | "warning" | "danger" | "info";
-type ButtonSizeTyp = "small" | "medium" | "large";
+type ButtonSizeTyp = "small" | "large";
 export interface ButtonPropsInterf extends ButtonNativePropsInterf {
   type?: ButtonTypeTyp;
   size?: ButtonSizeTyp;

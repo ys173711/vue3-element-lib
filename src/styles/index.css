@@ -1,2 +1,6 @@
 @import './var.css';
 @import './reset.css';
+@import './utils.css';
+
+/* component styles */
+@import '@/components/Button/style.css';

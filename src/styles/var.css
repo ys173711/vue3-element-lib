@@ -3,7 +3,8 @@
   /* 色彩体系: 主题色板/辅助色板/中性色板 */
   --e-color-white: #ffffff;
   --e-color-black: #000000;
-  --e-color-primary: #409eff;
+
+  /* --e-color-primary: #409eff;
   --e-color-primary-light-3: #79bbff;
   --e-color-primary-light-5: #a0cfff;
   --e-color-primary-light-7: #c6e2ff;
@@ -44,7 +45,30 @@
   --e-color-info-light-7: #dedfe0;
   --e-color-info-light-8: #e9e9eb;
   --e-color-info-light-9: #f4f4f5;
-  --e-color-info-dark-2: #73767a;
+  --e-color-info-dark-2: #73767a; */
+
+  /* 改造主题色板, 为了更好拓展性, 比如主题换肤需求 */
+  --theme-colors: (
+    primary: #409eff,
+    success: #67c23a,
+    warning: #e6a23c,
+    danger: #f56c6c,
+    error: #f56c6c,
+    info: #909399
+  );
+  @each $type, $color in var(--theme-colors) {
+    --e-color-$(type): $(color);
+    /* postcss编辑器插件不支持此非postcss官方已存档的插件的语法, 忽略报错即可 */
+    @for $i from 3 to 9 by 2 {
+      /* light浅色是白色跟主色按一定混合比率生成 */
+      --e-color-$(type)-light-$(i): mix(#ffffff, $(color), 0.$i);
+    }
+    --e-color-$(type)-light-8: mix(#ffffff, $(color), 0.8);
+    /* dark深色是黑色... */
+    --e-color-$(type)-dark-2: mix(#ffffff, $(color), 0.2);
+    
+  }
+
 
   /* 中性色板 */
   --e-bg-color: #ffffff;

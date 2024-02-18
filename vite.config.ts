@@ -14,13 +14,16 @@ export default defineConfig({
     }
   },
   css: {
-    preprocessorOptions: {
+    /* postcss: { // postcss插件暂不支持TS
+      plugins: []
+    }, */
+    /* preprocessorOptions: {
       scss: { // 全局引入sass全局变量，mixin
         // additionalData: `
         //   @import "@/assets/scss/variable.scss";
         //   @import "@/assets/scss/mixin.scss";
         // `
       }
-    }
+    } */
   }
 })
