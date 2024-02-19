@@ -12,5 +12,7 @@ import TestEl from '@/components/Button/Test-El.vue'
 </template>
 
 <style scoped>
-
+.title {
+  text-align: center;
+}
 </style>

@@ -11,6 +11,9 @@ onMounted(() => {
 
 const msg = ref('测试<el-button>组件')
 
+const logMsg = () => {
+  console.log('msg: ', msg.value)
+}
 
 </script>
 
@@ -19,51 +22,52 @@ const msg = ref('测试<el-button>组件')
     <h1>{{ msg }}</h1>
     <main>
       <div class="row">
-      <e-button>btn</e-button>
-      <e-button type="primary">btn</e-button>
-      <e-button type="success">btn</e-button>
-      <e-button type="info">btn</e-button>
-      <e-button type="warning">btn</e-button>
-      <e-button type="danger">btn</e-button>
-    </div>
-    <div class="row">
-      <e-button plain>btn</e-button>
-      <e-button type="primary" plain>btn</e-button>
-      <e-button type="success" plain>btn</e-button>
-      <e-button type="info" plain>btn</e-button>
-      <e-button type="warning" plain>btn</e-button>
-      <e-button type="danger" plain>btn</e-button>
-    </div>
-    <div class="row">
-      <e-button round>btn</e-button>
-      <e-button type="primary" round>btn</e-button>
-      <e-button type="success" round>btn</e-button>
-      <e-button type="info" round>btn</e-button>
-      <e-button type="warning" round>btn</e-button>
-      <e-button type="danger" round>btn</e-button>
-    </div>
-    <div class="row">
-      <e-button circle>btn</e-button>
-      <e-button type="primary" circle>btn</e-button>
-      <e-button type="success" circle>btn</e-button>
-      <e-button type="info" circle>btn</e-button>
-      <e-button type="warning" circle>btn</e-button>
-      <e-button type="danger" circle>btn</e-button>
-    </div>
-    <div class="row">
-      <e-button disabled>btn</e-button>
-      <e-button type="primary" disabled>btn</e-button>
-      <e-button type="success" disabled>btn</e-button>
-      <e-button type="info" disabled>btn</e-button>
-      <e-button type="warning" disabled>btn</e-button>
-      <e-button type="danger" disabled>btn</e-button>
-    </div>
-    <div class="row">
-      <e-button size='small'>btn</e-button>
-      <e-button>btn</e-button>
-      <e-button size='large'>btn</e-button>
-    </div>
+        <e-button @click="logMsg">btn</e-button>
+        <e-button type="primary">btn</e-button>
+        <e-button type="success">btn</e-button>
+        <e-button type="info">btn</e-button>
+        <e-button type="warning">btn</e-button>
+        <e-button type="danger">btn</e-button>
+      </div>
+      <div class="row">
+        <e-button plain>btn</e-button>
+        <e-button type="primary" plain>btn</e-button>
+        <e-button type="success" plain>btn</e-button>
+        <e-button type="info" plain>btn</e-button>
+        <e-button type="warning" plain>btn</e-button>
+        <e-button type="danger" plain>btn</e-button>
+      </div>
+      <div class="row">
+        <e-button round>btn</e-button>
+        <e-button type="primary" round>btn</e-button>
+        <e-button type="success" round>btn</e-button>
+        <e-button type="info" round>btn</e-button>
+        <e-button type="warning" round>btn</e-button>
+        <e-button type="danger" round>btn</e-button>
+      </div>
+      <div class="row">
+        <e-button circle>btn</e-button>
+        <e-button type="primary" circle>btn</e-button>
+        <e-button type="success" circle>btn</e-button>
+        <e-button type="info" circle>btn</e-button>
+        <e-button type="warning" circle>btn</e-button>
+        <e-button type="danger" circle>btn</e-button>
+      </div>
+      <div class="row">
+        <e-button disabled>btn</e-button>
+        <e-button type="primary" disabled>btn</e-button>
+        <e-button type="success" disabled>btn</e-button>
+        <e-button type="info" disabled>btn</e-button>
+        <e-button type="warning" disabled>btn</e-button>
+        <e-button type="danger" disabled>btn</e-button>
+      </div>
+      <div class="row">
+        <e-button size='small'>btn</e-button>
+        <e-button>btn</e-button>
+        <e-button size='large'>btn</e-button>
+      </div>
     </main>
+    
   </div>
 </template>
 
@@ -71,4 +75,5 @@ const msg = ref('测试<el-button>组件')
 .row {
   margin-top: 10px;
 }
+
 </style>

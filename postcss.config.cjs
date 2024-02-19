@@ -11,7 +11,7 @@ module.exports = {
     require('postcss-each')({
       plugins: {
         beforeEach: [ // 注意配置在each插件钩子之前
-          require('postcss-for'), 
+          // require('postcss-for'), // 此插件不符合官方标准, 不使用
           require('postcss-color-mix'),
         ]
       }
