@@ -6,10 +6,10 @@ import type { ButtonInstanceInterf } from '@/components/Button/types'
 const buttonRef = ref<ButtonInstanceInterf>()
 console.log('buttonRef: ', buttonRef.value?.el)
 onMounted(() => {
-  console.log('onMounted, buttonRef: ', buttonRef.value?.el)
+  // console.log('onMounted, buttonRef: ', buttonRef.value?.el)
 })
 
-const msg = ref('测试<el-button>组件')
+const msg = ref('测试<e-button>')
 
 const logMsg = () => {
   console.log('msg: ', msg.value)

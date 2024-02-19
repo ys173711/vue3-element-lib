@@ -1,5 +1,7 @@
 <script lang="ts" setup>
-import TestEl from '@/components/Button/Test-El.vue'
+import TestButton from '@/components/Button/E-Test.vue'
+import TestCollapse from '@/components/Collapse/E-Test.vue'
+
 </script>
 
 <template>
@@ -7,7 +9,8 @@ import TestEl from '@/components/Button/Test-El.vue'
     <h1 class="title">Vue3 + TS 开发组件库</h1>
   </header>
   <main>
-    <TestEl />
+    <TestButton />
+    <TestCollapse />
   </main>
 </template>
 
