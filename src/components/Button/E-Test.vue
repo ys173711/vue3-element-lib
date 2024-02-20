@@ -4,7 +4,7 @@ import EButton from '@/components/Button/E-Button.vue'
 import type { ButtonInstanceInterf } from '@/components/Button/types'
 
 const buttonRef = ref<ButtonInstanceInterf>()
-console.log('buttonRef: ', buttonRef.value?.el)
+// console.log('buttonRef: ', buttonRef.value?.el)
 onMounted(() => {
   // console.log('onMounted, buttonRef: ', buttonRef.value?.el)
 })

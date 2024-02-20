@@ -1,13 +1,20 @@
 <script lang='ts' setup>
-import { ref } from 'vue'
+import { computed, inject,  } from 'vue'
 import type { CollapseItemProps } from './types'
+import { collapseContextKey } from './types'
 
 defineOptions({name: 'ECollapseItem'})
-withDefaults(defineProps<CollapseItemProps>(), {
+const props = withDefaults(defineProps<CollapseItemProps>(), {
   title: 'Default Title',
 })
 
-const msg = ref('test')
+const collapseContext = inject(collapseContextKey)
+const isActive = computed(() => collapseContext?.activeNames.value.includes(props.name)
+)
+const handleClick = () => {
+  if (props.disabled) return
+  collapseContext?.handleItemClick(props.name)
+}
 </script>
 
 <template>
@@ -17,10 +24,10 @@ const msg = ref('test')
       'is-disabled': disabled,
     }"
   >
-    <div class="e-collapse-item__header">
+    <div class="e-collapse-item__title" @click="handleClick">
       <slot name="title">{{ title }}</slot>
     </div>
-    <div class="e-collapse-item__main">
+    <div class="e-collapse-item__content" v-show="isActive">
       <slot></slot>
     </div>
   </div>

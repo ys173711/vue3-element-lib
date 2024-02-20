@@ -1,27 +1,23 @@
 <script lang='ts' setup>
-import { ref } from 'vue'
-import type { NameTyp } from './types'
+import type { CollapseProps, CollapseEmits, NameTyp, } from './types'
+import { useCollapse } from './useCollapse'
 
-defineOptions({name: 'ECollapse'})
+defineOptions({ name: 'ECollapse' })
+const props = defineProps<CollapseProps>()
+defineEmits<CollapseEmits>()
 
-// 保存<CollapseItem>的展开状态
-const activeNames = ref<NameTyp[]>([])
-const handleItemClick = (name: NameTyp) => {
-  const index = activeNames.value.indexOf(name)
-  if (index === -1) {
-    activeNames.value.push(name)
-  } else {
-    activeNames.value.splice(index, 1)
-  }
-}
+// 保存<CollapseItem>的展开状态, 用于控制展开/收起, 手风琴模式
+const activeNames = defineModel<NameTyp[]>({ default: [] })
+useCollapse(activeNames, props);
+
+
+
 </script>
 
 <template>
-  <div>
+  <div class="e-collapse">
     <slot></slot>
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
