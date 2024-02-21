@@ -1,20 +1,19 @@
-<script lang='ts' setup>
-import { ref, onMounted } from 'vue'
-import EButton from '@/components/Button/E-Button.vue'
-import type { ButtonInstanceInterf } from '@/components/Button/types'
+<script lang="ts" setup>
+import { ref, onMounted } from "vue";
+import EButton from "@/components/Button/E-Button.vue";
+// import type { ButtonInstanceInterf } from "@/components/Button/types";
 
-const buttonRef = ref<ButtonInstanceInterf>()
+// const buttonRef = ref<ButtonInstanceInterf>();
 // console.log('buttonRef: ', buttonRef.value?.el)
 onMounted(() => {
   // console.log('onMounted, buttonRef: ', buttonRef.value?.el)
-})
+});
 
-const msg = ref('测试<e-button>')
+const msg = ref("测试<e-button>");
 
 const logMsg = () => {
-  console.log('msg: ', msg.value)
-}
-
+  console.log("msg: ", msg.value);
+};
 </script>
 
 <template>
@@ -62,12 +61,11 @@ const logMsg = () => {
         <e-button type="danger" disabled>btn</e-button>
       </div>
       <div class="row">
-        <e-button size='small'>btn</e-button>
+        <e-button size="small">btn</e-button>
         <e-button>btn</e-button>
-        <e-button size='large'>btn</e-button>
+        <e-button size="large">btn</e-button>
       </div>
     </main>
-    
   </div>
 </template>
 
@@ -75,5 +73,4 @@ const logMsg = () => {
 .row {
   margin-top: 10px;
 }
-
 </style>

@@ -1,13 +1,12 @@
 import type { Ref, InjectionKey } from "vue";
 
-
 // <ECollapseItem>的props
 export interface CollapseItemProps {
   name: string | number;
   title?: string;
   disabled?: boolean;
 }
-export type NameTyp = CollapseItemProps['name']
+export type NameTyp = CollapseItemProps["name"];
 
 // <ECollapse>通过slot传给<ECollapseItem>的ctx
 export interface CollapseContext<T> {
@@ -22,8 +21,6 @@ export interface CollapseProps {
   accordion?: boolean;
 }
 export interface CollapseEmits {
-  (e: 'update:modelValue', val: NameTyp[]): void;
-  (e: 'change', val: NameTyp[]): void;
+  (e: "update:modelValue", val: NameTyp[]): void;
+  (e: "change", val: NameTyp[]): void;
 }
-
-
