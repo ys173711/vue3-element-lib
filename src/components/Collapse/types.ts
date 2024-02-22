@@ -13,7 +13,9 @@ export interface CollapseContext<T> {
   activeNames: Ref<T[]>;
   handleItemClick: (name: T) => void;
 }
-export const collapseContextKey = Symbol("ECollapseContext") as InjectionKey<CollapseContext<NameTyp>>;
+export const collapseContextKey = Symbol("ECollapseContext") as InjectionKey<
+  CollapseContext<NameTyp>
+>;
 
 // <ECollapse>的props
 export interface CollapseProps {

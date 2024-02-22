@@ -1,7 +1,8 @@
-@import './var.css';
-@import './reset.css';
-@import './utils.css';
+@import "./var.css";
+@import "./reset.css";
+@import "./utils.css";
 
 /* component styles */
-@import '@/components/Button/style.css';
-@import '@/components/Collapse/style.css';
+@import "@/components/Button/style.css";
+@import "@/components/Collapse/style.css";
+@import "@/components/Icon/style.css";

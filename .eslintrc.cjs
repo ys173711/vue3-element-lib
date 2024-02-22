@@ -39,7 +39,7 @@ module.exports = {
         endOfLine: "auto", // 换行符
         semi: true, // 使用分号
         singleQuote: false, // 是否使用单引号
-        printWidth: 800, // 每行代码长度默认80
+        printWidth: 80, // 每行代码长度默认80
         tabWidth: 2, // 每个缩进的空格数
       },
     ],

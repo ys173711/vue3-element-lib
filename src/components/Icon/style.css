@@ -1,0 +1,15 @@
+.e-icon {
+  --e-icon-color: inherit;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  fill: currentColor;
+  color: var(--e-icon-color);
+  font-size: inherit;
+}
+@each $type in (primary, success, warning, danger, info) {
+  .e-icon-$(type) {
+    --e-icon-color: var(--e-color-$(type));
+  }
+}

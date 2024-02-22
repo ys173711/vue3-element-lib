@@ -3,7 +3,7 @@ type ButtonNativeTypeTyp = "button" | "submit" | "reset";
 interface ButtonNativePropsInterf {
   autofocus?: boolean;
   disabled?: boolean;
-  
+
   // form?: string; // form相关
 
   name?: string;
