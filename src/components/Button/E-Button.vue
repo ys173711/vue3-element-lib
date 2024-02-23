@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import type { ButtonPropsInterf } from "./types";
+import EIcon from "../Icon/E-Icon.vue";
 
 defineOptions({ name: "EButton" });
 
@@ -25,10 +26,13 @@ defineExpose({
       'is-round': round,
       'is-circle': circle,
       'is-disabled': disabled,
+      'is-loading': loading,
     }"
-    :disabled="disabled"
+    :disabled="disabled || loading"
     :autofocus="autofocus"
   >
+    <EIcon v-if="loading" icon="spinner" spin />
+    <EIcon v-if="icon" :icon="icon" />
     <slot></slot>
   </button>
 </template>

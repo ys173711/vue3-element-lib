@@ -21,10 +21,14 @@
   }
   &.is-active .e-collapse-item__title {
     border-bottom-color: transparent;
+    .title-icon {
+      transform: rotate(90deg);
+    }
   }
 
   .e-collapse-item__title {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     height: var(--e-collapse-header-height);
     line-height: var(--e-collapse-header-height);
@@ -36,6 +40,10 @@
     font-weight: 500;
     transition: border-bottom-color var(--e-transition-duration);
     outline: none;
+    .title-icon {
+      margin-right: 8px;
+      transition: transform var(--e-transition-duration) ease-in-out;
+    }
   }
 
   .e-collapse-item__content {

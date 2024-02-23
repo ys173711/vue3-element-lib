@@ -65,6 +65,10 @@ const logMsg = () => {
         <e-button>btn</e-button>
         <e-button size="large">btn</e-button>
       </div>
+      <div class="row">
+        <e-button loading>测试loading</e-button>
+        <e-button icon="star">测试自定义icon</e-button>
+      </div>
     </main>
   </div>
 </template>

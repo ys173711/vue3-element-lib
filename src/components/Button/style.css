@@ -124,3 +124,9 @@
   font-size: var(--e-font-size-base);
   border-radius: var(--e-border-radius-base);
 }
+
+.e-button {
+  .e-icon {
+    margin-right: 5px;
+  }
+}

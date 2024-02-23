@@ -19,6 +19,8 @@ export interface ButtonPropsInterf extends ButtonNativePropsInterf {
   plain?: boolean;
   round?: boolean;
   circle?: boolean;
+  icon?: string;
+  loading?: boolean;
 }
 
 export interface ButtonInstanceInterf {

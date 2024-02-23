@@ -58,16 +58,14 @@
   );
   @each $type, $color in var(--theme-colors) {
     --e-color-$(type): $(color);
-    
+
     /* light浅色是白色跟主色按一定混合比率生成 */
     @each $i in (3, 5, 7, 8, 9) {
-      --e-color-$(type)-light-$(i): mix(#ffffff, $(color), 0.$i);
+      --e-color-$(type)-light-$(i): mix(#ffffff, $(color), 0$i);
     }
     /* dark深色是黑色... */
     --e-color-$(type)-dark-2: mix(#ffffff, $(color), 0.2);
-    
   }
-
 
   /* 中性色板 */
   --e-bg-color: #ffffff;
@@ -137,4 +135,8 @@
   --e-disabled-bg-color: var(--e-fill-color-light);
   --e-disabled-text-color: var(--e-text-color-placeholder);
   --e-disabled-border-color: var(--e-border-color-light);
+
+  /* transition */
+  --e-transition-duration: 0.3s;
+  --e-transition-duration-fast: 0.2s;
 }

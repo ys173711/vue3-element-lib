@@ -27,9 +27,9 @@ module.exports = {
   },
   plugins: ["@typescript-eslint", "vue", "@stylistic"],
   rules: {
-    "@stylistic/indent": ["error", 2], // 强制使用两个空格缩进
-    "@stylistic/semi": "off", // 关闭分号检查, "error"、"warn" 或 "off"
-    "@stylistic/quotes": ["off", "single"], // 允许使用单引号
+    // "@stylistic/indent": ["error", 2], // 强制使用两个空格缩进
+    // "@stylistic/semi": "off", // 关闭分号检查, "error"、"warn" 或 "off"
+    // "@stylistic/quotes": ["off", "single"], // 允许使用单引号
     // "@typescript-eslint/method-signature-style": ["error", "property"], // 不允许使用方法定义函数类型（双向协变）
     // 'vue/multi-word-component-names': 'off', // 关闭多个单词组成的组件名检查
     "prettier/prettier": [
