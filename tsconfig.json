@@ -10,8 +10,9 @@
     "moduleResolution": "bundler",
     "baseUrl": ".", // .代表当前工程目录
     "paths": {
-      "@/*": ["src/*"],
+      "@/*": ["src/*"]
     },
+    "types": ["vitest/globals"], // 为了让vite的测试环境能够识别全局变量
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
