@@ -19,7 +19,7 @@ export const collapseContextKey = Symbol("ECollapseContext") as InjectionKey<
 
 // <ECollapse>的props
 export interface CollapseProps {
-  modelValue: NameTyp[];
+  modelValue?: NameTyp[];
   accordion?: boolean;
 }
 export interface CollapseEmits {

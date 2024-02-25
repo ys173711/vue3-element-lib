@@ -2,9 +2,14 @@ import { provide, ModelRef } from "vue";
 import { collapseContextKey } from "./types";
 import type { CollapseProps, NameTyp } from "./types";
 
-export function useCollapse(activeNames: ModelRef<NameTyp[]>, props: CollapseProps) {
+export function useCollapse(
+  activeNames: ModelRef<NameTyp[]>,
+  props: CollapseProps,
+) {
   if (props.accordion && activeNames.value.length > 1) {
-    console.warn("accordion mode, <ECollapse> modelValue can only have one value");
+    console.warn(
+      "accordion mode, <ECollapse> modelValue can only have one value",
+    );
   }
   let handleItemClick;
   if (props.accordion) {

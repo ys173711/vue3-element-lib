@@ -7,7 +7,8 @@
     "dev": "vite",
     "lint": "eslint --ext .vue, .js, .ts, .jsx, .tsx src --fix",
     "format": "prettier --write \"src/**/*.{vue,js,ts,jsx,tsx,json,css,scss,less,html}\"",
-    "test": "vitest"
+    "test:all": "vitest",
+    "test": "vitest \"./src/components/Collapse\" --watch"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
@@ -25,6 +26,7 @@
     "@typescript-eslint/eslint-plugin": "^7.0.1",
     "@typescript-eslint/parser": "^7.0.1",
     "@vitejs/plugin-vue": "^5.0.3",
+    "@vitejs/plugin-vue-jsx": "^3.1.0",
     "@vue/eslint-config-prettier": "^9.0.0",
     "@vue/test-utils": "^2.4.4",
     "eslint": "^8.56.0",

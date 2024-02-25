@@ -57,7 +57,7 @@ const transitionEvents: Record<string, (el: HTMLElement, done: any) => void> = {
       <EIcon icon="angle-right" class="title-icon" />
     </div>
     <Transition name="slide" v-on="transitionEvents">
-      <div v-show="isActive">
+      <div class="e-collapse-item__wrapper" v-show="isActive">
         <div class="e-collapse-item__content">
           <slot></slot>
         </div>

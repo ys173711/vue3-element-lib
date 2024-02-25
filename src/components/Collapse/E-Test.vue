@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from "vue";
-import ECollapseItem from "./E-Collapse-Item.vue";
+import ECollapseItem from "./E-CollapseItem.vue";
 import ECollapse from "./E-Collapse.vue";
 
 const msg = ref("测试<e-collapse-item>");
