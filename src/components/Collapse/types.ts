@@ -22,7 +22,3 @@ export interface CollapseProps {
   modelValue?: NameTyp[];
   accordion?: boolean;
 }
-export interface CollapseEmits {
-  (e: "update:modelValue", val: NameTyp[]): void;
-  (e: "change", val: NameTyp[]): void;
-}
