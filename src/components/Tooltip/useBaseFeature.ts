@@ -1,4 +1,4 @@
-import { reactive, ref, watch } from "vue";
+import { onUnmounted, reactive, ref, watch, watchEffect } from "vue";
 import { createPopper } from "@popperjs/core";
 import type { Instance } from "@popperjs/core";
 import type { TooltipProps, TooltipEmits } from "./types";
@@ -48,18 +48,32 @@ const useBaseFeature = (props: TooltipProps, emits: TooltipEmits) => {
       events.click = toggle;
     }
   };
-  attachEvents();
+  const resetEvents = () => {
+    events.mouseenter = undefined;
+    events_outer.mouseleave = undefined;
+  };
+  watchEffect(() => {
+    if (props.manual) {
+      resetEvents();
+    } else {
+      attachEvents();
+    }
+  });
   watch(
     () => props.trigger,
     (newVal, oldVal) => {
       if (newVal === oldVal) return;
-      events = reactive({});
-      events_outer = reactive({});
+      resetEvents();
       attachEvents();
     },
   );
 
-  return { isOpen, close, events, events_outer };
+  // 优化
+  onUnmounted(() => {
+    popperInstance?.destroy();
+  });
+
+  return { isOpen, open, close, events, events_outer, popperNode, triggerNode };
 };
 
 export default useBaseFeature;
