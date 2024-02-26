@@ -1,0 +1,8 @@
+.e-tooltip {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.e-tooltip__trigger {
+  color: inherit;
+}

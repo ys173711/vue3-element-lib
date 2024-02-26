@@ -1,5 +1,5 @@
 import axios from "axios";
-import { reactive, toRefs,  } from "vue";
+import { reactive, toRefs } from "vue";
 
 interface ResultTyp<T> {
   result: T | null;
@@ -27,7 +27,6 @@ export default function useURLLoader<T>(url: string) {
       res.loading = false;
     });
   // toRef
-
 
   return resToRefs;
 }

@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 // import TestButton from "@/components/Button/E-Test.vue";
-import TestCollapse from "@/components/Collapse/E-Test.vue";
+// import TestCollapse from "@/components/Collapse/E-Test.vue";
 // import TestIcon from "@/components/Icon/E-Test.vue";
+import TestTooltip from "@/components/Tooltip/E-Test.vue";
 </script>
 
 <template>
@@ -10,8 +11,9 @@ import TestCollapse from "@/components/Collapse/E-Test.vue";
   </header>
   <main>
     <!-- <TestButton /> -->
-    <TestCollapse />
+    <!-- <TestCollapse /> -->
     <!-- <TestIcon /> -->
+    <TestTooltip />
   </main>
 </template>
 
