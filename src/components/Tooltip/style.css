@@ -2,7 +2,7 @@
   display: inline-block;
   cursor: pointer;
 
-  /* transition fade */
+  /* transition fade 注意不要写transform动画, 与popper.js动画冲突 */
   :is(.fade-enter-active, .fade-leave-active) {
     transition: opacity var(--e-transition-duration) ease;
   }
