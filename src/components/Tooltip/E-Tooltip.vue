@@ -8,24 +8,34 @@ const props = withDefaults(defineProps<TooltipProps>(), {
   content: "tooltip content",
   placement: "bottom",
   trigger: "hover",
+  transition: "fade",
+  openDelay: 0,
+  closeDelay: 0,
 });
 const emits = defineEmits<TooltipEmits>();
 
 // useBaseFeature
-const { isOpen, open, close, events, events_outer, popperNode, triggerNode } =
-  useBaseFeature(props, emits);
+const {
+  isOpen,
+  openDebounce,
+  closeDebounce,
+  events,
+  events_outer,
+  popperNode,
+  triggerNode,
+} = useBaseFeature(props, emits);
 
 const wrapperEl = ref<HTMLElement>();
 useClickOutside(wrapperEl, () => {
   if (!props.manual && props.trigger === "click" && isOpen.value) {
-    close();
+    closeDebounce();
   }
 });
 
 //
 defineExpose<TooltipInstance>({
-  show: open,
-  hide: close,
+  show: openDebounce,
+  hide: closeDebounce,
 });
 </script>
 
@@ -34,9 +44,11 @@ defineExpose<TooltipInstance>({
     <div ref="triggerNode" class="e-tooltip__trigger" v-on="events">
       <slot />
     </div>
-    <div ref="popperNode" class="e-tooltip__popper" v-if="isOpen">
-      <slot name="content">{{ content }}</slot>
-    </div>
+    <Transition :name="transition">
+      <div ref="popperNode" class="e-tooltip__popper" v-if="isOpen">
+        <slot name="content">{{ content }}</slot>
+      </div>
+    </Transition>
   </div>
 </template>
 

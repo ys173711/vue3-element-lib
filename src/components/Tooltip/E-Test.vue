@@ -33,13 +33,7 @@ const close = () => {
       </template>
     </ETooltip>
     <hr />
-    <ETooltip
-      ref="tooltip"
-      content="hello world!"
-      placement="top"
-      trigger="click"
-      manual
-    >
+    <ETooltip ref="tooltip" content="hello world!" trigger="click" manual>
       <div class="box">box</div>
       <template #content>
         <h2>tooltip h2</h2>
@@ -47,6 +41,32 @@ const close = () => {
     </ETooltip>
     <button @click="open">打开tooltip</button>
     <button @click="close">关闭tooltip</button>
+    <hr />
+    <ETooltip
+      content="hello world!"
+      placement="right"
+      trigger="click"
+      :options="{ placement: 'right-end', strategy: 'fixed' }"
+      transition="fade"
+    >
+      <div class="box">box</div>
+      <template #content>
+        <h2>tooltip h2</h2>
+      </template>
+    </ETooltip>
+    <hr />
+    <ETooltip
+      content="hello world!"
+      placement="right"
+      trigger="hover"
+      :open-delay="1000"
+      :close-delay="1000"
+    >
+      <div class="box" style="background-color: green">box</div>
+      <template #content>
+        <h3>tooltip h3</h3>
+      </template>
+    </ETooltip>
   </div>
 </template>
 

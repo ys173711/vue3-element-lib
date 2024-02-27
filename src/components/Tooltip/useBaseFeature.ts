@@ -1,49 +1,78 @@
-import { onUnmounted, reactive, ref, watch, watchEffect } from "vue";
+import { computed, onUnmounted, reactive, ref, watch, watchEffect } from "vue";
 import { createPopper } from "@popperjs/core";
 import type { Instance } from "@popperjs/core";
 import type { TooltipProps, TooltipEmits } from "./types";
+import { debounce } from "lodash-es";
 
 const useBaseFeature = (props: TooltipProps, emits: TooltipEmits) => {
   const popperNode = ref<HTMLElement>();
   const triggerNode = ref<HTMLElement>();
   const isOpen = ref(false);
   let popperInstance: Instance | null = null;
+  // merge options
+  const options = computed(() => {
+    return {
+      placement: props.placement,
+      ...props.options,
+    };
+  });
   watch(
-    isOpen,
-    (newVal) => {
-      if (newVal) {
+    [isOpen, options],
+    (newValArr) => {
+      if (newValArr[0]) {
         if (triggerNode.value && popperNode.value) {
-          popperInstance = createPopper(triggerNode.value, popperNode.value, {
-            placement: props.placement,
-          });
+          popperInstance = createPopper(
+            triggerNode.value,
+            popperNode.value,
+            options.value,
+          );
         } else {
           popperInstance?.destroy();
         }
-      } else {
-        popperInstance?.destroy();
       }
     },
     { flush: "post" },
   );
   //
-  const toggle = () => {
-    isOpen.value = !isOpen.value;
-    emits("visible-change", isOpen.value);
-  };
+  const openCount = ref(0);
+  const closeCount = ref(0);
+
   const open = () => {
+    openCount.value++;
+    console.log("openCount", openCount.value);
     isOpen.value = true;
     emits("visible-change", isOpen.value);
   };
   const close = () => {
+    closeCount.value++;
+    console.log("closeCount", closeCount.value);
     isOpen.value = false;
     emits("visible-change", isOpen.value);
+  };
+  const openDebounce_ = debounce(open, props.openDelay);
+  const closeDebounce_ = debounce(close, props.closeDelay);
+  // 优化
+  const openDebounce = () => {
+    closeDebounce_.cancel();
+    openDebounce_();
+  };
+  const closeDebounce = () => {
+    openDebounce_.cancel();
+    closeDebounce_();
+  };
+  const toggle = () => {
+    if (isOpen.value) {
+      closeDebounce();
+    } else {
+      openDebounce();
+    }
   };
   let events: Record<string, any> = reactive({});
   let events_outer: Record<string, any> = reactive({});
   const attachEvents = () => {
     if (props.trigger === "hover") {
-      events.mouseenter = open;
-      events_outer.mouseleave = close;
+      events.mouseenter = openDebounce;
+      events_outer.mouseleave = closeDebounce;
     } else if (props.trigger === "click") {
       events.click = toggle;
     }
@@ -73,7 +102,15 @@ const useBaseFeature = (props: TooltipProps, emits: TooltipEmits) => {
     popperInstance?.destroy();
   });
 
-  return { isOpen, open, close, events, events_outer, popperNode, triggerNode };
+  return {
+    isOpen,
+    openDebounce,
+    closeDebounce,
+    events,
+    events_outer,
+    popperNode,
+    triggerNode,
+  };
 };
 
 export default useBaseFeature;
