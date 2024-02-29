@@ -13,6 +13,14 @@ const useBaseFeature = (props: TooltipProps, emits: TooltipEmits) => {
   const options = computed(() => {
     return {
       placement: props.placement,
+      modifiers: [
+        {
+          name: "offset",
+          options: {
+            offset: [0, 10],
+          },
+        },
+      ],
       ...props.options,
     };
   });

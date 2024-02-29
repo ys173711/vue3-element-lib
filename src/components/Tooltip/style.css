@@ -1,6 +1,94 @@
 .e-tooltip {
+  --e-popper-bg-color: var(--e-bg-color);
+  --e-popper-font-size: var(--e-font-size-base);
+  --e-popper-color: var(--e-text-color-regular);
+  --e-popper-padding: 12px;
+  --e-popper-border-color: var(--e-border-color);
+  --e-popper-border-radius: var(--e-border-radius-base);
+
   display: inline-block;
-  cursor: pointer;
+  position: relative;
+
+  .e-tooltip__popper {
+    --border-size: 1px;
+    --border-style: var(--border-size) solid var(--e-popper-border-color);
+
+    background-color: var(--e-popper-bg-color);
+    color: var(--e-popper-color);
+    font-size: var(--e-popper-font-size);
+    padding: var(--e-popper-padding);
+    border: var(--border-style);
+    box-shadow: var(--e-box-shadow-light);
+    border-radius: var(--e-popper-border-radius);
+    z-index: 100;
+
+    /* data-popper-arrow属性选择器 */
+    [data-popper-arrow] {
+      --box-size: 8px;
+      --offset-arrow: calc(-1 * var(--box-size) / 2 - var(--border-size));
+      --offset-arrow-start: calc(-1 * var(--box-size));
+      --offset-arrow-end: var(--box-size);
+
+      width: var(--box-size);
+      height: var(--box-size);
+      box-sizing: border-box;
+      position: absolute;
+      visibility: hidden;
+
+      &::before {
+        content: "";
+        display: block;
+        width: var(--box-size);
+        height: var(--box-size);
+        background-color: var(--e-popper-bg-color);
+        box-sizing: border-box;
+        rotate: 45deg;
+        visibility: visible;
+      }
+    }
+    &[data-popper-placement^="right"] [data-popper-arrow] {
+      left: var(--offset-arrow);
+      &::before {
+        border-left: var(--border-style);
+        border-bottom: var(--border-style);
+      }
+    }
+    &[data-popper-placement^="left"] [data-popper-arrow] {
+      right: var(--offset-arrow);
+      &::before {
+        border-right: var(--border-style);
+        border-top: var(--border-style);
+      }
+    }
+    &[data-popper-placement^="bottom"] [data-popper-arrow] {
+      top: var(--offset-arrow);
+      &::before {
+        border-top: var(--border-style);
+        border-left: var(--border-style);
+      }
+    }
+    &[data-popper-placement^="top"] [data-popper-arrow] {
+      bottom: var(--offset-arrow);
+      &::before {
+        border-bottom: var(--border-style);
+        border-right: var(--border-style);
+      }
+    }
+    &:is(
+        [data-popper-placement="right-start"],
+        [data-popper-placement="left-start"]
+      )
+      [data-popper-arrow] {
+      top: var(--offset-arrow-start) !important;
+    }
+    &:is(
+        [data-popper-placement="right-end"],
+        [data-popper-placement="left-end"]
+      )
+      [data-popper-arrow] {
+      top: var(--offset-arrow-end) !important;
+    }
+  }
 
   /* transition fade 注意不要写transform动画, 与popper.js动画冲突 */
   :is(.fade-enter-active, .fade-leave-active) {

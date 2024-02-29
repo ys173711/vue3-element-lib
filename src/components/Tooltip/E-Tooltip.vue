@@ -47,6 +47,7 @@ defineExpose<TooltipInstance>({
     <Transition :name="transition">
       <div ref="popperNode" class="e-tooltip__popper" v-if="isOpen">
         <slot name="content">{{ content }}</slot>
+        <div data-popper-arrow></div>
       </div>
     </Transition>
   </div>

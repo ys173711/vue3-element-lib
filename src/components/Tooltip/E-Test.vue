@@ -22,23 +22,32 @@ const close = () => {
     <ETooltip content="hello world!" placement="right-end" trigger="hover">
       <div class="box">box</div>
       <template #content>
-        <h3>tooltip h3</h3>
+        <span>tooltip</span>
       </template>
     </ETooltip>
     <hr />
     <ETooltip content="hello world!" placement="top" trigger="click">
       <div class="box">box</div>
-      <template #content>
-        <h2>tooltip h2</h2>
-      </template>
+      <template #content> tooltip h2 </template>
     </ETooltip>
     <hr />
-    <ETooltip ref="tooltip" content="hello world!" trigger="click" manual>
-      <div class="box">box</div>
-      <template #content>
-        <h2>tooltip h2</h2>
-      </template>
-    </ETooltip>
+    <div style="padding-left: 200px">
+      <ETooltip
+        ref="tooltip"
+        content="hello world!"
+        trigger="click"
+        manual
+        placement="bottom-start"
+      >
+        <div
+          class="box"
+          style="background-color: white; border: 1px solid green"
+        >
+          box
+        </div>
+        <template #content> tooltip h2 </template>
+      </ETooltip>
+    </div>
     <button @click="open">打开tooltip</button>
     <button @click="close">关闭tooltip</button>
     <hr />
