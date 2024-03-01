@@ -1,0 +1,19 @@
+:root {
+  /* override vitepress default theme */
+  --vp-c-brand-1: var(--e-color-primary);
+  --vp-c-brand-2: var(--e-color-primary-light-3);
+  --vp-c-brand-3: var(--e-color-primary);
+  --vp-c-brand-soft: var(--e-color-primary-dark-2);
+
+  /* override vitepress-demo-preview */
+  --component-preview-bg: var(--vp-c-bg-alt);
+  --component-preview-soft: var(--vp-c-bg-soft);
+}
+
+/* fix: dark theme */
+body {
+  color: var(--vp-c-text-1);
+}
+:is(h1, h2, h3, h4, h5, h6, p) {
+  color: var(--vp-c-text-1);
+}

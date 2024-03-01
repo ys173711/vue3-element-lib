@@ -1,6 +1,10 @@
 import { defineConfig } from "vitepress";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import path from "path";
+import {
+  containerPreview,
+  componentPreview,
+} from "@vitepress-demo-preview/plugin";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -10,8 +14,14 @@ export default defineConfig({
     plugins: [vueJsx()],
     resolve: {
       alias: {
-        "@": path.resolve("./src"),
+        "@": path.resolve("./src"), // resolve postcss path
       },
+    },
+  },
+  markdown: {
+    config(md) {
+      md.use(containerPreview);
+      md.use(componentPreview);
     },
   },
   themeConfig: {
